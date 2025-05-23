@@ -6,9 +6,6 @@ export class Pitch {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
-  code?: string;
-
   @Column({ nullable: true })
   name?: string;
 
