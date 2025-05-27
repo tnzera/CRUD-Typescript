@@ -19,17 +19,11 @@ export class Reservation {
   @Column()
   durationMinutes?: number;
 
-  @ManyToOne(() => Player, (player) => player.reservations, {
-    eager: false,
-    onDelete: "CASCADE",
-  })
+  @ManyToOne(() => Player, (player) => player.reservations)
   @JoinColumn({ name: "playerId" })
   player?: Player;
 
-  @ManyToOne(() => Pitch, (pitch) => pitch.reservations, {
-    eager: false,
-    onDelete: "CASCADE",
-  })
+  @ManyToOne(() => Pitch, (pitch) => pitch.reservations)
   @JoinColumn({ name: "pitchId" })
   pitch?: Pitch;
 }
