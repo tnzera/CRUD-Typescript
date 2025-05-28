@@ -4,6 +4,8 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { Player } from "./Player";
 import { Pitch } from "./Pitch";
@@ -19,11 +21,10 @@ export class Reservation {
   @Column()
   durationMinutes?: number;
 
-  @ManyToOne(() => Player, (player) => player.reservations)
-  @JoinColumn({ name: "playerId" })
-  player?: Player;
+  @ManyToMany(() => Player)
+  @JoinTable()
+  player?: Player[];
 
   @ManyToOne(() => Pitch, (pitch) => pitch.reservations)
-  @JoinColumn({ name: "pitchId" })
   pitch?: Pitch;
 }

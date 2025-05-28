@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
 import { Reservation } from "./Reservation";
 
 @Entity()
@@ -12,6 +12,6 @@ export class Player {
   @Column({ unique: true })
   email?: string;
 
-  @OneToMany(() => Reservation, (reservation) => reservation.player)
+  @ManyToMany(() => Reservation, (reservation) => reservation.player)
   reservations?: Reservation[];
 }
