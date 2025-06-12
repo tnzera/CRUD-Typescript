@@ -1,5 +1,7 @@
 import { Repository } from "typeorm";
 import { Reservation } from "../model/Reservation";
+import { Pitch } from "../model/Pitch";
+import { Player } from "../model/Player";
 
 export class ReservationService {
   private reservationRepository: Repository<Reservation>;
@@ -21,7 +23,13 @@ export class ReservationService {
         msg: "Missing required fields: player (must be a non-empty array), pitch, reservationTime, and durationMinutes are required.",
       };
     }
-    return await this.reservationRepository.save(reservation);
+    const newReservation = this.reservationRepository.create({
+      reservationTime: reservation.reservationTime,
+      durationMinutes: reservation.durationMinutes,
+      pitch: { id: reservation.pitch.id } as Pitch,
+      player: reservation.player.map((p) => ({ id: p.id } as Player)),
+    });
+    return await this.reservationRepository.save(newReservation);
   }
 
   async list(): Promise<Reservation[]> {
