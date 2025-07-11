@@ -12,10 +12,12 @@ import { ReservationService } from "./services/ReservationService";
 import { ReservationController } from "./controller/ReservationController";
 import { ReservationRouter } from "./routes/ReservationRouter";
 import express from "express";
+import cors from "cors";
 
 AppDataSource.initialize()
   .then((async) => {
     const app = express();
+    app.use(cors());
     app.use(express.json());
 
     const playerRepository = AppDataSource.getRepository(Player);
