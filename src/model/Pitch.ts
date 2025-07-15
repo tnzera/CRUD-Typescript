@@ -9,6 +9,9 @@ export class Pitch {
   @Column({ nullable: true })
   name?: string;
 
+  @Column({ nullable: true })
+  imageUrl?: string;
+
   @OneToMany(() => Reservation, (reservation) => reservation.pitch)
   reservations?: Reservation[];
 }

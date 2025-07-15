@@ -10,8 +10,9 @@ export class PitchController {
 
   insert = async (req: Request, res: Response): Promise<void> => {
     const { name } = req.body;
+    const imageUrl = req.file ? req.file.path : undefined;
     try {
-      const newPitch = await this.service.insert({ name });
+      const newPitch = await this.service.insert({ name, imageUrl });
       res.status(201).json(newPitch);
     } catch (err: any) {
       res.status(err.id).json({ error: err.msg });
