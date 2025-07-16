@@ -61,7 +61,7 @@ export const createPitch = async (name: string, imageFile: File) => {
   const formData = new FormData();
 
   formData.append("name", name);
-  formData.append("image", imageFile);
+  formData.append("pitchImage", imageFile);
 
   try {
     const response = await axios.post(`${API_URL}/Pitch`, formData, {

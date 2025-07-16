@@ -8,7 +8,7 @@ export function Header() {
       {/* Adicione uma div interna com a classe do layout */}
       <div className="header-content">
         <div className="header-logo">
-          <Link to="/">SoccerApp</Link>
+          <Link to="/">FootballApp</Link>
         </div>
         <nav className="header-nav">
           <ul>
