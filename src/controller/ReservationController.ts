@@ -44,7 +44,14 @@ export class ReservationController {
       const reservation = await this.service.delete(id);
       res.json(reservation);
     } catch (err: any) {
-      res.status(err.id).json({ error: err.msg });
+      if (err.id && err.msg) {
+        res.status(err.id).json({ error: err.msg });
+      } else {
+        console.error("Error deleting reservation:", err.message);
+        res.status(500).json({
+          error: "An error occored while trying to delete reservation.",
+        });
+      }
     }
   };
 }

@@ -40,7 +40,14 @@ export class PitchController {
       const pitch = await this.service.delete(id);
       res.json(pitch);
     } catch (err: any) {
-      res.status(err.id).json({ error: err.msg });
+      if (err.id && err.msg) {
+        res.status(err.id).json({ error: err.msg });
+      } else {
+        console.error("Error trying to delete pitch:", err.message);
+        res.status(500).json({
+          error: "Cant delete pitch while reservation is active.",
+        });
+      }
     }
   };
 }

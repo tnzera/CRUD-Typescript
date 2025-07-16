@@ -51,7 +51,14 @@ export class PlayerController {
       const player = await this.service.delete(id);
       res.json(player);
     } catch (err: any) {
-      res.status(err.id).json({ error: err.msg });
+      if (err.id && err.msg) {
+        res.status(err.id).json({ error: err.msg });
+      } else {
+        console.error("Cant delete player:", err.message);
+        res.status(500).json({
+          error: "Cant delete player while active reservation exists.",
+        });
+      }
     }
   };
 }

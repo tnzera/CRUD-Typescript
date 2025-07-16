@@ -102,3 +102,35 @@ export const createReservation = async (payload: ReservationPayload) => {
     throw error;
   }
 };
+
+export const deletePitch = async (id: number) => {
+  try {
+    const response = await axios.delete(`${API_URL}/Pitch/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting pitch:", error);
+    throw error;
+  }
+};
+
+export const deletePlayer = async (id: number) => {
+  try {
+    // A rota no backend é DELETE /api/player/:id
+    const response = await axios.delete(`${API_URL}/player/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao deletar o jogador:", error);
+    throw error;
+  }
+};
+
+export const deleteReservation = async (id: number) => {
+  try {
+    // A rota no backend é DELETE /api/reservation/:id
+    const response = await axios.delete(`${API_URL}/reservation/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao deletar a reserva:", error);
+    throw error;
+  }
+};
