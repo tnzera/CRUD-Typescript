@@ -20,8 +20,13 @@ interface Reservation {
   player: Player[]; // Uma reserva tem uma lista de jogadores
   pitch: Pitch; // E uma quadra
 }
+interface ReservationPayload {
+  reservationTime: string;
+  durationMinutes: number;
+  player: { id: number }[];
+  pitch: { id: number };
+}
 
-// Function to get all players
 export const getPlayers = async () => {
   try {
     const response = await axios.get(`${API_URL}/player`);
@@ -84,6 +89,16 @@ export const createPlayer = async (name: string, email: string) => {
     return response.data;
   } catch (error) {
     console.error("Error creating player:", error);
+    throw error;
+  }
+};
+
+export const createReservation = async (payload: ReservationPayload) => {
+  try {
+    const response = await axios.post(`${API_URL}/reservation`, payload);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating reservation:", error);
     throw error;
   }
 };

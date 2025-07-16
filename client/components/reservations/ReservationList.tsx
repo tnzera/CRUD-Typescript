@@ -39,7 +39,7 @@ export function ReservationList() {
     };
 
     fetchReservations();
-  }, []);
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
