@@ -46,7 +46,7 @@ export function PlayerList() {
       setPlayerToDelete(null);
       fetchPlayers();
     } catch (err) {
-      alert("Falha ao deletar o jogador. Verifique se ele não tem reservas.");
+      alert("Failed to load player.");
       setIsConfirmModalOpen(false);
     }
   };

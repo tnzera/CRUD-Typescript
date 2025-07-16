@@ -13,14 +13,12 @@ interface Pitch {
 export function PitchList() {
   const [pitches, setPitches] = useState<Pitch[]>([]);
   const [loading, setLoading] = useState(true);
-  //usestate erros
+
   const [error, setError] = useState<string | null>(null);
 
-  //usestate para controlar o estado dos modais
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-  //usestate deletar
   const [pitchToDelete, setPitchToDelete] = useState<Pitch | null>(null);
 
   const fetchPitches = async () => {
@@ -40,11 +38,10 @@ export function PitchList() {
   }, []);
 
   const handlePitchCreated = () => {
-    setIsCreateModalOpen(false); // Fecha o modal
-    fetchPitches(); // Recarrega a lista de quadras
+    setIsCreateModalOpen(false);
+    fetchPitches();
   };
 
-  // Abre o modal de confirmação e define qual quadra deletar
   const handleDeleteClick = (pitch: Pitch) => {
     setPitchToDelete(pitch);
     setIsConfirmModalOpen(true);
@@ -56,9 +53,9 @@ export function PitchList() {
 
     try {
       await deletePitch(pitchToDelete.id);
-      setIsConfirmModalOpen(false); // Fecha o modal
-      setPitchToDelete(null); // Limpa o estado
-      fetchPitches(); // Recarrega a lista
+      setIsConfirmModalOpen(false);
+      setPitchToDelete(null);
+      fetchPitches();
     } catch (err) {
       alert("Falha ao deletar a quadra.");
       setIsConfirmModalOpen(false);

@@ -3,7 +3,6 @@ import { getReservations, deleteReservation } from "../../services/apiService";
 import { Modal } from "../ui/Modal";
 import "./../css/ReservationList.css";
 
-// Reutilize as interfaces definidas no apiService ou defina-as aqui
 interface Player {
   id: number;
   name: string;

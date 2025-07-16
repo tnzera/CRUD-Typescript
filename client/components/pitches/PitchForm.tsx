@@ -3,7 +3,7 @@ import { createPitch } from "../../services/apiService";
 import "./../css/PitchForm.css";
 
 interface PitchFormProps {
-  onSuccess: () => void; // Função para ser chamada após o sucesso
+  onSuccess: () => void;
 }
 
 export function PitchForm({ onSuccess }: PitchFormProps) {
