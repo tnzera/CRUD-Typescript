@@ -13,10 +13,10 @@ import { PitchesPage } from "../pages/PitchesPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // The Layout component wraps all pages
+    element: <Layout />,
     children: [
       {
-        index: true, // This makes ReservationsPage the default for "/"
+        index: true,
         element: <ReservationsPage />,
       },
       {

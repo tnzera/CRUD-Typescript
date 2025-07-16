@@ -92,9 +92,9 @@ export function PlayerList() {
         onClose={() => setIsConfirmModalOpen(false)}
       >
         <div className="confirmation-dialog">
-          <h2>Confirmar Exclusão</h2>
+          <h2>Confirmation</h2>
           <p>
-            Você tem certeza que deseja deletar o jogador
+            Are you sure you want to delete player
             <strong> "{playerToDelete?.name}"</strong>?
           </p>
           <div className="confirmation-buttons">
@@ -102,13 +102,13 @@ export function PlayerList() {
               className="cancel-button"
               onClick={() => setIsConfirmModalOpen(false)}
             >
-              Cancelar
+              Cancel
             </button>
             <button
               className="confirm-delete-button"
               onClick={handleConfirmDelete}
             >
-              Deletar
+              Delete
             </button>
           </div>
         </div>

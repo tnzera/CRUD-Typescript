@@ -5,12 +5,10 @@ import { ReservationForm } from "../components/reservations/ReservationForm";
 
 export function ReservationsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Estado para forçar a atualização da lista
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleReservationCreated = () => {
     setIsModalOpen(false);
-    // Altera a chave para forçar o componente ReservationList a recarregar
     setRefreshKey((prevKey) => prevKey + 1);
   };
 
@@ -31,8 +29,6 @@ export function ReservationsPage() {
           + New Reservation
         </button>
       </div>
-
-      {/* Passa a chave para o componente da lista */}
       <ReservationList key={refreshKey} />
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

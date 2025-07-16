@@ -15,7 +15,7 @@ export function PlayerForm({ onSuccess }: PlayerFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) {
-      setError("Nome e email são obrigatórios.");
+      setError("Missing Name or Email.");
       return;
     }
     setError("");
@@ -24,7 +24,7 @@ export function PlayerForm({ onSuccess }: PlayerFormProps) {
       await createPlayer(name, email);
       onSuccess();
     } catch (err) {
-      setError("Falha ao criar o jogador.");
+      setError("Faild to load Player.");
     } finally {
       setIsSubmitting(false);
     }
@@ -32,9 +32,9 @@ export function PlayerForm({ onSuccess }: PlayerFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="pitch-form">
-      <h2>Adicionar Novo Jogador</h2>
+      <h2>Add New Player</h2>
       <div className="form-group">
-        <label htmlFor="playerName">Nome</label>
+        <label htmlFor="playerName">Name</label>
         <input
           type="text"
           id="playerName"
@@ -57,7 +57,7 @@ export function PlayerForm({ onSuccess }: PlayerFormProps) {
         className="form-submit-button"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Enviando..." : "Adicionar Jogador"}
+        {isSubmitting ? "Sending..." : "Adicionar Jogador"}
       </button>
     </form>
   );
