@@ -1,7 +1,7 @@
 # Dependencies
 node_modules/
 package-lock.json
-public/uploads/
+
 
 # Build output
 dist/
@@ -32,3 +32,6 @@ pnpm-debug.log*
 # Operating System files
 .DS_Store
 Thumbs.db
+
+# User uploads
+public/uploads/

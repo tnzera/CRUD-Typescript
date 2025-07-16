@@ -1,0 +1,67 @@
+.pitch-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.pitch-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.pitch-card:hover {
+  transform: translateY(-5px);
+}
+
+.pitch-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.pitch-info {
+  padding: 1rem;
+  flex: 1;
+}
+
+.pitch-info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* Estilo para o card de adicionar */
+.add-pitch-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #ccc;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-pitch-card:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+.add-pitch-icon {
+  font-size: 4rem;
+  color: #ccc;
+  line-height: 1;
+}
+
+.add-pitch-card p {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}

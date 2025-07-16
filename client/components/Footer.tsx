@@ -1,15 +1,9 @@
 import React from "react";
+import "./css/Footer.css";
 
 export function Footer() {
   return (
-    <footer
-      style={{
-        background: "#333",
-        color: "white",
-        padding: "1rem",
-        marginTop: "2rem",
-      }}
-    >
+    <footer>
       <p>&copy; 2025 Your Company</p>
     </footer>
   );
