@@ -57,11 +57,13 @@ export const getReservations = async () => {
   }
 };
 
-export const createPitch = async (name: string, imageFile: File) => {
+export const createPitch = async (name: string, imageFile: File | null) => {
   const formData = new FormData();
 
   formData.append("name", name);
-  formData.append("pitchImage", imageFile);
+  if (imageFile) {
+    formData.append("pitchImage", imageFile);
+  }
 
   try {
     const response = await axios.post(`${API_URL}/Pitch`, formData, {
@@ -72,6 +74,16 @@ export const createPitch = async (name: string, imageFile: File) => {
     return response.data;
   } catch (error) {
     console.error("Error creating pitch:", error);
+    throw error;
+  }
+};
+
+export const createPlayer = async (name: string, email: string) => {
+  try {
+    const response = await axios.post(`${API_URL}/player`, { name, email });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating player:", error);
     throw error;
   }
 };

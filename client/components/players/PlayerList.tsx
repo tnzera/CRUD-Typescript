@@ -1,8 +1,9 @@
-// In client/src/components/players/PlayerList.tsx
 import React, { useState, useEffect } from "react";
-import { getPlayers } from "../../services/apiService"; // Import your new service
+import { getPlayers } from "../../services/apiService";
+import "../css/PlayerList.css";
+import { PlayerForm } from "./PlayerForm";
+import { Modal } from "../ui/Modal";
 
-// Define a type for your player data for type safety
 interface Player {
   id: number;
   name: string;
@@ -11,37 +12,52 @@ interface Player {
 
 export function PlayerList() {
   const [players, setPlayers] = useState<Player[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const fetchPlayers = async () => {
+    setIsLoading(true);
+    const data = await getPlayers();
+    setPlayers(data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const fetchPlayers = async () => {
-      try {
-        const data = await getPlayers();
-        setPlayers(data);
-      } catch (error) {
-        // Handle error state here if you want
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchPlayers();
-  }, []); // Empty array ensures this runs once
+  }, []);
 
-  if (loading) {
-    return <p>Loading players...</p>;
-  }
+  const handlePlayerCreated = () => {
+    setIsModalOpen(false);
+    fetchPlayers();
+  };
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>Player List</h2>
-      <ul>
+    <>
+      <ul className="player-list">
         {players.map((player) => (
-          <li key={player.id}>
-            {player.name} ({player.email})
+          <li key={player.id} className="player-item">
+            <span className="player-name">{player.name}</span>
+            <span className="player-email">{player.email}</span>
           </li>
         ))}
       </ul>
-    </div>
+
+      <div className="add-player-link-container">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
+        >
+          + Add Player
+        </a>
+      </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <PlayerForm onSuccess={handlePlayerCreated} />
+      </Modal>
+    </>
   );
 }

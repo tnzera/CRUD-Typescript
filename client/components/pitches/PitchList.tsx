@@ -51,7 +51,7 @@ export function PitchList() {
           <div key={pitch.id} className="pitch-card">
             <img
               src={
-                pitch.imageUrl || "https://placehold.co/600x400?text=Sem+Imagem"
+                pitch.imageUrl || "https://placehold.co/600x400?text=No+Image"
               }
               alt={pitch.name}
               className="pitch-image"
@@ -62,17 +62,15 @@ export function PitchList() {
           </div>
         ))}
 
-        {/* --- CARD DE ADICIONAR --- */}
         <div
           className="pitch-card add-pitch-card"
           onClick={() => setIsModalOpen(true)}
         >
           <div className="add-pitch-icon">+</div>
-          <p>Adicionar Quadra</p>
+          <p>Add Pitch</p>
         </div>
       </div>
 
-      {/* --- RENDERIZAÇÃO DO MODAL --- */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <PitchForm onSuccess={handlePitchCreated} />
       </Modal>

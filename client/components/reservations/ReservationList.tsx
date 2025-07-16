@@ -65,7 +65,7 @@ export function ReservationList() {
                 })}
               </p>
               <p>
-                <strong>Duração:</strong> {res.durationMinutes} minutos
+                <strong>Duration:</strong> {res.durationMinutes} minutos
               </p>
               <div className="reservation-players">
                 <strong>Players:</strong>
